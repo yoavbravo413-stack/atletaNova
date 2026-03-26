@@ -18,10 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
         reveals.forEach(element => {
             const windowHeight = window.innerHeight;
             const elementTop = element.getBoundingClientRect().top;
-            const elementVisible = 150;
+            const elementVisible = 100;
 
             if (elementTop < windowHeight - elementVisible) {
                 element.classList.add('active');
+            } else {
+                // Optional: remove class when scrolling back up to repeat animation
+                // element.classList.remove('active');
             }
         });
     }
@@ -33,13 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            navbar.style.padding = '1rem 0';
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            navbar.style.boxShadow = '0 5px 20px rgba(0,0,0,0.05)';
+            navbar.classList.add('scrolled');
         } else {
-            navbar.style.padding = '1.5rem 0';
-            navbar.style.background = 'rgba(255, 255, 255, 0.9)';
-            navbar.style.boxShadow = 'none';
+            navbar.classList.remove('scrolled');
         }
     });
 
